@@ -12,11 +12,11 @@ namespace eCommerce.Infrastructure.Data
         /// <summary>
         /// Gets or sets the collection of Products in the database.
         /// </summary>
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products => Set<Product>();
 
         /// <summary>
         /// Gets or sets the collection of Categories in the database.
         /// </summary>
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories => Set<Category>();
     }
 }
