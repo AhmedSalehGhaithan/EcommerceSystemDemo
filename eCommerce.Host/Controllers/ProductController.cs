@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eCommerce.Host.Controllers
 {
+    /// <summary>
+    /// Controller for managing Product.
+    /// </summary>
+    /// <param name="_service">Service for product operations.</param>
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController(IProductService _service) : ControllerBase
@@ -39,6 +43,8 @@ namespace eCommerce.Host.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add(CreateProduct product)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _service.CreateAsync(product);
             return result.Flag ? Ok(result) : BadRequest(result);
         }
@@ -51,6 +57,8 @@ namespace eCommerce.Host.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(UpdateProduct product)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _service.UpdateAsync(product);
             return result.Flag ? Ok(result) : BadRequest(result);
         }

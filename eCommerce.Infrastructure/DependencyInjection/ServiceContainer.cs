@@ -1,7 +1,11 @@
-﻿using eCommerce.Domain.Entities;
+﻿using eCommerce.Application.Services.Interfaces.Logging;
+using eCommerce.Domain.Entities;
 using eCommerce.Domain.Interfaces;
 using eCommerce.Infrastructure.Data;
 using eCommerce.Infrastructure.Repositories;
+using eCommerce.Infrastructure.Services;
+using EntityFramework.Exceptions.SqlServer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,12 +33,29 @@ namespace eCommerce.Infrastructure.DependencyInjection
                 {
                     sqlOptions.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName);
                     sqlOptions.EnableRetryOnFailure();
-                }),
+                }).UseExceptionProcessor(),
                 ServiceLifetime.Scoped);
 
             service.AddScoped<IGeneric<Product>, GenericRepository<Product>>();
             service.AddScoped<IGeneric<Category>, GenericRepository<Category>>();
+           
+            service.AddScoped(typeof(IAppLogger<>),typeof(SerilogLoggerAdapter<>));
+
             return service;
+        }
+        /// <summary>
+        /// Configures the middleware pipeline to include custom exception handling
+        /// for the eCommerce application. This middleware captures exceptions thrown
+        /// during request processing and provides a centralized way to handle them,
+        /// improving error management and user experience.
+        /// </summary>
+        /// <param name="app">The IApplicationBuilder used to configure the application's request pipeline.</param>
+        /// <returns>The modified IApplicationBuilder, enabling method chaining.</returns>
+
+        public static IApplicationBuilder UseInfrastructureService(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+            return app;
         }
     }
 }

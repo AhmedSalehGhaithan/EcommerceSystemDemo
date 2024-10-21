@@ -44,10 +44,11 @@ namespace eCommerce.Host.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add(CreateCategory product)
         {
+            if(!ModelState.IsValid) 
+                return BadRequest(ModelState);
             var result = await _service.CreateAsync(product);
             return result.Flag ? Ok(result) : BadRequest(result);
         }
-
         /// <summary>
         /// Updates an existing category.
         /// </summary>
@@ -56,6 +57,8 @@ namespace eCommerce.Host.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(UpdateCategory product)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var result = await _service.UpdateAsync(product);
             return result.Flag ? Ok(result) : BadRequest(result);
         }
