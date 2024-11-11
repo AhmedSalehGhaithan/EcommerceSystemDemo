@@ -1,0 +1,57 @@
+2024-11-10 21:53:48.987 +03:00 [INF] Application is building ............
+2024-11-10 21:53:50.383 +03:00 [INF] Application is running .........
+2024-11-10 21:53:50.629 +03:00 [INF] Now listening on: https://localhost:7230
+2024-11-10 21:53:50.634 +03:00 [INF] Now listening on: http://localhost:5196
+2024-11-10 21:53:50.693 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-10 21:53:50.696 +03:00 [INF] Hosting environment: Development
+2024-11-10 21:53:50.699 +03:00 [INF] Content root path: D:\Year3\.NET\NetCode-Hub\EcommerceSystem\eCommerce.Host
+2024-11-10 21:53:51.830 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/index.html - null null
+2024-11-10 21:53:52.287 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/index.html - 200 null text/html;charset=utf-8 460.9463ms
+2024-11-10 21:53:52.404 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-10 21:53:52.404 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_vs/browserLink - null null
+2024-11-10 21:53:52.440 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 32.6673ms
+2024-11-10 21:53:52.506 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.0126ms
+2024-11-10 21:53:52.915 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - null null
+2024-11-10 21:53:53.099 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 183.8445ms
+2024-11-10 21:53:59.863 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/api/Category/all - null null
+2024-11-10 21:53:59.881 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.CategoryController.GetAll (eCommerce.Host)'
+2024-11-10 21:53:59.914 +03:00 [INF] Route matched with {action = "GetAll", controller = "Category"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller eCommerce.Host.Controllers.CategoryController (eCommerce.Host).
+2024-11-10 21:54:05.398 +03:00 [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Name]
+FROM [Categories] AS [c]
+2024-11-10 21:54:05.535 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[eCommerce.Application.DTOs.Category.GetCategory, eCommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-10 21:54:05.560 +03:00 [INF] Executed action eCommerce.Host.Controllers.CategoryController.GetAll (eCommerce.Host) in 5636.3655ms
+2024-11-10 21:54:05.563 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.CategoryController.GetAll (eCommerce.Host)'
+2024-11-10 21:54:05.576 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/api/Category/all - 200 null application/json; charset=utf-8 5712.4737ms
+2024-11-10 21:54:14.783 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/api/Product/all - null null
+2024-11-10 21:54:14.790 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host)'
+2024-11-10 21:54:14.800 +03:00 [INF] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller eCommerce.Host.Controllers.ProductController (eCommerce.Host).
+2024-11-10 21:54:14.966 +03:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[Image], [p].[Name], [p].[Price], [p].[Quantity]
+FROM [Products] AS [p]
+2024-11-10 21:54:14.990 +03:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.Collections.Generic.List`1[[eCommerce.Application.DTOs.Product.GetProduct, eCommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-10 21:54:14.998 +03:00 [INF] Executed action eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host) in 190.6459ms
+2024-11-10 21:54:15.003 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host)'
+2024-11-10 21:54:15.008 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/api/Product/all - 404 null application/json; charset=utf-8 224.9082ms
+2024-11-10 21:55:06.182 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7230/api/Product/add - application/json 157
+2024-11-10 21:55:06.203 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.ProductController.Add (eCommerce.Host)'
+2024-11-10 21:55:06.245 +03:00 [INF] Route matched with {action = "Add", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(eCommerce.Application.DTOs.Product.CreateProduct) on controller eCommerce.Host.Controllers.ProductController (eCommerce.Host).
+2024-11-10 21:55:06.913 +03:00 [INF] Executed DbCommand (167ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [CategoryId], [Description], [Image], [Name], [Price], [Quantity])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2024-11-10 21:55:06.942 +03:00 [INF] Executing OkObjectResult, writing value of type 'eCommerce.Application.DTOs.Response.ServiceResponse'.
+2024-11-10 21:55:06.950 +03:00 [INF] Executed action eCommerce.Host.Controllers.ProductController.Add (eCommerce.Host) in 694.0855ms
+2024-11-10 21:55:06.955 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.ProductController.Add (eCommerce.Host)'
+2024-11-10 21:55:06.959 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7230/api/Product/add - 200 null application/json; charset=utf-8 777.006ms
+2024-11-10 21:55:15.097 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/api/Product/all - null null
+2024-11-10 21:55:15.108 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host)'
+2024-11-10 21:55:15.112 +03:00 [INF] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller eCommerce.Host.Controllers.ProductController (eCommerce.Host).
+2024-11-10 21:55:15.131 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[Image], [p].[Name], [p].[Price], [p].[Quantity]
+FROM [Products] AS [p]
+2024-11-10 21:55:15.145 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[eCommerce.Application.DTOs.Product.GetProduct, eCommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-10 21:55:15.157 +03:00 [INF] Executed action eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host) in 38.1223ms
+2024-11-10 21:55:15.163 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.ProductController.GetAll (eCommerce.Host)'
+2024-11-10 21:55:15.167 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/api/Product/all - 200 null application/json; charset=utf-8 69.7946ms

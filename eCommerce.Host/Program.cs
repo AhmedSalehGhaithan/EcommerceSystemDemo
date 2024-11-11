@@ -22,10 +22,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructureService(builder.Configuration);
 builder.Services.AddApplicationService();
 
+builder.Services.AddCors(builder =>
+{
+    builder.AddDefaultPolicy(options =>
+    {
+        options.AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins("Https://localhost:7025")
+        .AllowCredentials();
+    });
+});
+
 try
 {
     var app = builder.Build();
 
+    app.UseCors();
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {

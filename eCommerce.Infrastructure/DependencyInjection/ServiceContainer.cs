@@ -1,14 +1,21 @@
-﻿using eCommerce.Application.Services.Interfaces.Logging;
+﻿using eCommerce.Application.Services.Interfaces.Authentication;
+using eCommerce.Application.Services.Interfaces.Logging;
 using eCommerce.Domain.Entities;
+using eCommerce.Domain.Entities.Identity;
 using eCommerce.Domain.Interfaces;
 using eCommerce.Infrastructure.Data;
 using eCommerce.Infrastructure.Repositories;
+using eCommerce.Infrastructure.Repositories.Authentication;
 using eCommerce.Infrastructure.Services;
 using EntityFramework.Exceptions.SqlServer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace eCommerce.Infrastructure.DependencyInjection
 {
@@ -23,12 +30,12 @@ namespace eCommerce.Infrastructure.DependencyInjection
         /// to use SQL Server with the specified connection string.
         /// </summary>
         /// <param name="service">The IServiceCollection to add services to.</param>
-        /// <param name="config">The IConfiguration instance used to access application settings.</param>
+        /// <param name="_config">The IConfiguration instance used to access application settings.</param>
         /// <returns>The modified IServiceCollection, enabling method chaining.</returns>
-        public static IServiceCollection AddInfrastructureService(this IServiceCollection service, IConfiguration config)
+        public static IServiceCollection AddInfrastructureService(this IServiceCollection service, IConfiguration _config)
         {
             service.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(config.GetConnectionString("defaultConnection"),
+                options.UseSqlServer(_config.GetConnectionString("defaultConnection"),
                 sqlOptions =>
                 {
                     sqlOptions.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName);
@@ -40,6 +47,43 @@ namespace eCommerce.Infrastructure.DependencyInjection
             service.AddScoped<IGeneric<Category>, GenericRepository<Category>>();
            
             service.AddScoped(typeof(IAppLogger<>),typeof(SerilogLoggerAdapter<>));
+
+            service.AddDefaultIdentity<AppUser>(options =>
+            {
+                options.SignIn.RequireConfirmedEmail = true;
+                options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequiredLength = 8;
+            }).AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
+            service.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    RequireExpirationTime = true,
+                    ValidIssuer = _config["JWT:Issuer"],
+                    ValidAudience = _config["JWT:Audience"],
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]!))
+                };
+            });
+            service.AddScoped<IRoleManager, RoleManagement>();
+            service.AddScoped<IUserManager, UserManagement>();
+            service.AddScoped<ITokenManager, TokenManagement>();
 
             return service;
         }

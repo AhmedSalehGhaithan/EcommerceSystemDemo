@@ -1,6 +1,12 @@
 ﻿using eCommerce.Application.Mapping;
 using eCommerce.Application.Services.Implementations;
+using eCommerce.Application.Services.Implementations.Authentication;
 using eCommerce.Application.Services.Interfaces;
+using eCommerce.Application.Services.Interfaces.Authentication;
+using eCommerce.Application.Validations;
+using eCommerce.Application.Validations.Authentication;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerce.Application.DependencyInjection
@@ -23,6 +29,12 @@ namespace eCommerce.Application.DependencyInjection
             // Register product and category services with scoped lifetime
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();;
+
+            services.AddScoped<IValidationService, ValidationService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             return services;
         }

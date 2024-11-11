@@ -1,6 +1,8 @@
-﻿using eCommerce.Infrastructure.Middleware.ChineOfRepo.ConcreteClasses;
+﻿using eCommerce.Application.Services.Interfaces.Logging;
+using eCommerce.Infrastructure.Middleware.ChineOfRepo.ConcreteClasses;
 using eCommerce.Infrastructure.Middleware.ChineOfRepo.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 
 public class ExceptionHandlingMiddleware
 {
@@ -43,14 +45,17 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception ex)
         {
+            var logger = context.RequestServices.GetRequiredService<IAppLogger<ExceptionHandlingMiddleware>>();
             context.Response.ContentType = "application/json";
             var handler = _handlers.FirstOrDefault(h => h.CanHandle(ex));
             if (handler != null)
             {
+                logger.LogError(ex, "Sql exception");
                 await handler.HandleAsync(context, ex);
             }
             else
             {
+                logger.LogError(ex, "Related EFCore exception");
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 await context.Response.WriteAsync("An unexpected error occurred.");
             }
