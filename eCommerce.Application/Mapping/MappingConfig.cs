@@ -36,6 +36,7 @@ namespace eCommerce.Application.Mapping
             CreateMap<UpdateProduct, Product>();
 
             CreateMap<CreateUser, AppUser>();
+
             CreateMap<LoginUser, AppUser>();
         }
     }

@@ -34,9 +34,7 @@ namespace eCommerce.Infrastructure.Repositories
         public async Task<int> DeleteAsync(Guid id)
         {
             var entity = await GetByIdAsync(id);
-
             if (entity is null) return 0;
-
             _context.Set<TEntity>().Remove(entity);
             return await _context.SaveChangesAsync();
         }
@@ -45,7 +43,7 @@ namespace eCommerce.Infrastructure.Repositories
         /// Asynchronously retrieves all entities of type TEntity.
         /// </summary>
         /// <returns>A collection of TEntity.</returns>
-        public async Task<ICollection<TEntity>> GetAllAsync()
+        public async Task<ICollection<TEntity>> GetAllAsync() 
             => await _context.Set<TEntity>().AsNoTracking().ToListAsync();
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace eCommerce.Infrastructure.Repositories
         {
             var entity = await _context.Set<TEntity>().FindAsync(id) ??
                 throw new ItemNotFoundException($"item with {id} Not found");
-
             return entity!;
         }
 
@@ -69,7 +66,6 @@ namespace eCommerce.Infrastructure.Repositories
         /// <returns>The number of state entries written to the database.</returns>
         public async Task<int> UpdateAsync(TEntity entity)
         {
-            
             _context.Set<TEntity>().Update(entity!);
             return await _context.SaveChangesAsync();
         }

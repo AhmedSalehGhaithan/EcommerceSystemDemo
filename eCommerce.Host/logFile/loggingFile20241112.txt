@@ -322,3 +322,103 @@ VALUES (@p0, @p1, @p2);
 2024-11-12 00:46:47.759 +03:00 [INF] Executed action eCommerce.Host.Controllers.AuthenticationController.LoginUser (eCommerce.Host) in 979.675ms
 2024-11-12 00:46:47.766 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.AuthenticationController.LoginUser (eCommerce.Host)'
 2024-11-12 00:46:47.773 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7230/api/Authentication/login - 200 null application/json; charset=utf-8 1059.5991ms
+2024-11-12 21:24:03.026 +03:00 [INF] Application is building ............
+2024-11-12 21:24:07.174 +03:00 [INF] User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-12 21:24:08.121 +03:00 [INF] Application is running .........
+2024-11-12 21:24:09.389 +03:00 [INF] Now listening on: https://localhost:7230
+2024-11-12 21:24:09.393 +03:00 [INF] Now listening on: http://localhost:5196
+2024-11-12 21:24:09.523 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-12 21:24:09.529 +03:00 [INF] Hosting environment: Development
+2024-11-12 21:24:09.533 +03:00 [INF] Content root path: D:\Year3\.NET\NetCode-Hub\EcommerceSystem\eCommerce.Host
+2024-11-12 21:24:11.289 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/index.html - null null
+2024-11-12 21:24:14.673 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/index.html - 200 null text/html;charset=utf-8 3393.4138ms
+2024-11-12 21:24:14.680 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-12 21:24:14.720 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 40.3615ms
+2024-11-12 21:24:14.743 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_vs/browserLink - null null
+2024-11-12 21:24:14.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_vs/browserLink - 200 null text/javascript; charset=UTF-8 137.9931ms
+2024-11-12 21:24:15.104 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - null null
+2024-11-12 21:24:15.428 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 324.6238ms
+2024-11-12 21:24:36.683 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7230/api/Authentication/login - application/json 65
+2024-11-12 21:24:36.743 +03:00 [INF] CORS policy execution failed.
+2024-11-12 21:24:36.749 +03:00 [INF] Request origin https://localhost:7230 does not have permission to access the resource.
+2024-11-12 21:24:36.776 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.AuthenticationController.LoginUser (eCommerce.Host)'
+2024-11-12 21:24:36.882 +03:00 [INF] Route matched with {action = "LoginUser", controller = "Authentication", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginUser(eCommerce.Application.DTOs.Identity.LoginUser) on controller eCommerce.Host.Controllers.AuthenticationController (eCommerce.Host).
+2024-11-12 21:24:43.470 +03:00 [INF] Executed DbCommand (300ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:24:43.771 +03:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:24:43.922 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-11-12 21:24:44.282 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:24:44.300 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:24:44.316 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:24:44.338 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-11-12 21:24:44.550 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Token], [r].[UserId]
+FROM [refreshTokens] AS [r]
+WHERE [r].[Token] = @__refreshToken_0
+2024-11-12 21:24:44.877 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [refreshTokens] ([Id], [Token], [UserId])
+VALUES (@p0, @p1, @p2);
+2024-11-12 21:24:44.931 +03:00 [INF] Executing OkObjectResult, writing value of type 'eCommerce.Application.DTOs.Response.LoginResponse'.
+2024-11-12 21:24:44.957 +03:00 [INF] Executed action eCommerce.Host.Controllers.AuthenticationController.LoginUser (eCommerce.Host) in 8054.9265ms
+2024-11-12 21:24:44.963 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.AuthenticationController.LoginUser (eCommerce.Host)'
+2024-11-12 21:24:44.987 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7230/api/Authentication/login - 200 null application/json; charset=utf-8 8304.2224ms
+2024-11-12 21:24:59.756 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/api/Authentication/refreshToken/qtnBm1nE4a%2Bzy7MZ0OVnHnniaOWuYw9hUPKHgxDdTeFCiQ3uLP2tA55jo3WfbtREdhSr%2FFNSQ3KtHeirrwoTRw%3D%3D - null null
+2024-11-12 21:24:59.772 +03:00 [INF] Executing endpoint 'eCommerce.Host.Controllers.AuthenticationController.RefreshToken (eCommerce.Host)'
+2024-11-12 21:24:59.786 +03:00 [INF] Route matched with {action = "RefreshToken", controller = "Authentication", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(System.String) on controller eCommerce.Host.Controllers.AuthenticationController (eCommerce.Host).
+2024-11-12 21:24:59.937 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Token], [r].[UserId]
+FROM [refreshTokens] AS [r]
+WHERE [r].[Token] = @__refreshToken_0
+2024-11-12 21:24:59.953 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Token], [r].[UserId]
+FROM [refreshTokens] AS [r]
+WHERE [r].[Token] = @__refreshToken_0
+2024-11-12 21:25:00.052 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Id] = @__p_0
+2024-11-12 21:25:00.065 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:25:00.077 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-11-12 21:25:00.089 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-11-12 21:25:00.103 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__refreshToken_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Token], [r].[UserId]
+FROM [refreshTokens] AS [r]
+WHERE [r].[Token] = @__refreshToken_0
+2024-11-12 21:25:00.113 +03:00 [INF] Executing OkObjectResult, writing value of type 'eCommerce.Application.DTOs.Response.LoginResponse'.
+2024-11-12 21:25:00.118 +03:00 [INF] Executed action eCommerce.Host.Controllers.AuthenticationController.RefreshToken (eCommerce.Host) in 324.7089ms
+2024-11-12 21:25:00.124 +03:00 [INF] Executed endpoint 'eCommerce.Host.Controllers.AuthenticationController.RefreshToken (eCommerce.Host)'
+2024-11-12 21:25:00.129 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/api/Authentication/refreshToken/qtnBm1nE4a%2Bzy7MZ0OVnHnniaOWuYw9hUPKHgxDdTeFCiQ3uLP2tA55jo3WfbtREdhSr%2FFNSQ3KtHeirrwoTRw%3D%3D - 200 null application/json; charset=utf-8 373.3424ms

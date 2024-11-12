@@ -21,12 +21,13 @@ namespace eCommerce.Infrastructure.Data
         /// Gets or sets the collection of Categories in the database.
         /// </summary>
         public DbSet<Category> Categories => Set<Category>();
-        /// <summary>
-        /// Gets or sets the collection of Users in the database.
-        /// </summary>
-        public DbSet<AppUser> Users => Set<AppUser>();
+      
         public DbSet<RefreshToken> refreshTokens => Set<RefreshToken>();
 
+        /// <summary>
+        /// seeding the role data 
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
