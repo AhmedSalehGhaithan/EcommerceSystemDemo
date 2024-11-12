@@ -1,0 +1,36 @@
+2024-11-13 01:54:23.280 +03:00 [INF] Application is building ............
+2024-11-13 01:54:26.664 +03:00 [ERR] Application failed to start........
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\Year3\.NET\NetCode-Hub\EcommerceSystem\eCommerce.Host\Program.cs:line 38
+2024-11-13 01:54:43.061 +03:00 [INF] Application is building ............
+2024-11-13 01:54:43.395 +03:00 [ERR] Application failed to start........
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\Year3\.NET\NetCode-Hub\EcommerceSystem\eCommerce.Host\Program.cs:line 38
+2024-11-13 01:55:07.307 +03:00 [INF] Application is building ............
+2024-11-13 01:55:08.289 +03:00 [INF] User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-13 01:55:08.578 +03:00 [INF] Application is running .........
+2024-11-13 01:55:09.674 +03:00 [INF] Now listening on: https://localhost:7230
+2024-11-13 01:55:09.680 +03:00 [INF] Now listening on: http://localhost:5196
+2024-11-13 01:55:09.909 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-13 01:55:09.913 +03:00 [INF] Hosting environment: Development
+2024-11-13 01:55:09.917 +03:00 [INF] Content root path: D:\Year3\.NET\NetCode-Hub\EcommerceSystem\eCommerce.Host
+2024-11-13 01:55:10.658 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/index.html - null null
+2024-11-13 01:55:12.746 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/index.html - 200 null text/html;charset=utf-8 2095.3832ms
+2024-11-13 01:55:12.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-13 01:55:12.766 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 17.276ms
+2024-11-13 01:55:12.777 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/_vs/browserLink - null null
+2024-11-13 01:55:12.833 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/_vs/browserLink - 200 null text/javascript; charset=UTF-8 56.9376ms
+2024-11-13 01:55:12.925 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - null null
+2024-11-13 01:55:13.092 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7230/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 167.1585ms

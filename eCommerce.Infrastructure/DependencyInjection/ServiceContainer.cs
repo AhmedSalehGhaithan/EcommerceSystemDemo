@@ -1,4 +1,5 @@
 ﻿using eCommerce.Application.Services.Interfaces.Authentication;
+using eCommerce.Application.Services.Interfaces.Cart;
 using eCommerce.Application.Services.Interfaces.Logging;
 using eCommerce.Domain.Entities;
 using eCommerce.Domain.Entities.Identity;
@@ -6,6 +7,8 @@ using eCommerce.Domain.Interfaces;
 using eCommerce.Infrastructure.Data;
 using eCommerce.Infrastructure.Repositories;
 using eCommerce.Infrastructure.Repositories.Authentication;
+using eCommerce.Infrastructure.Repositories.Cart;
+using eCommerce.Infrastructure.Service;
 using eCommerce.Infrastructure.Services;
 using EntityFramework.Exceptions.SqlServer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -85,8 +88,15 @@ namespace eCommerce.Infrastructure.DependencyInjection
             service.AddScoped<IUserManager, UserManagement>();
             service.AddScoped<ITokenManager, TokenManagement>();
 
+            service.AddScoped<IPaymentMethod, PaymentMethodRepo>();
+            service.AddScoped<IPaymentService, StripePaymentService>();
+            service.AddScoped<ICart, CartRepo>();
+
+            Stripe.StripeConfiguration.ApiKey = _config["Stripe:SecretKey"];
             return service;
         }
+
+
         /// <summary>
         /// Configures the middleware pipeline to include custom exception handling
         /// for the eCommerce application. This middleware captures exceptions thrown

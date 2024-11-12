@@ -1,4 +1,5 @@
 ﻿using eCommerce.Domain.Entities;
+using eCommerce.Domain.Entities.Cart;
 using eCommerce.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -23,6 +24,11 @@ namespace eCommerce.Infrastructure.Data
         public DbSet<Category> Categories => Set<Category>();
       
         public DbSet<RefreshToken> refreshTokens => Set<RefreshToken>();
+        /// <summary>
+        /// Gets or sets the collection of Payment Methods in the database.
+        /// </summary>
+        public DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
+        public DbSet<Achieve> CheckoutAchieve => Set<Achieve>();
 
         /// <summary>
         /// seeding the role data 
@@ -31,12 +37,20 @@ namespace eCommerce.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<PaymentMethod>().HasData(
+                new PaymentMethod
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Credit Card"
+                });
+                
             builder.Entity<IdentityRole>().HasData(
-                new IdentityRole{
+                new IdentityRole
+                {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Admin",
                     NormalizedName = "ADMIN"
-            },
+                },
                 new IdentityRole
                 {
                     Id = Guid.NewGuid().ToString(),
